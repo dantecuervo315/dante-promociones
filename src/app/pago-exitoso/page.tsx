@@ -1,11 +1,9 @@
-'use client'
-
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import { useCart } from '@/lib/CartContext'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 
-export default function PagoExitosoPage() {
+function PagoExitosoContent() {
     const { clearCart } = useCart();
     const searchParams = useSearchParams();
     const paymentId = searchParams.get('payment_id');
@@ -94,5 +92,13 @@ export default function PagoExitosoPage() {
                 </div>
             </div>
         </div>
+    )
+}
+
+export default function PagoExitosoPage() {
+    return (
+        <Suspense fallback={<div style={{ textAlign: 'center', padding: '4rem' }}>Cargando confirmación...</div>}>
+            <PagoExitosoContent />
+        </Suspense>
     )
 }
