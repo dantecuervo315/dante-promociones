@@ -36,13 +36,16 @@ body {
   color: var(--foreground);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif;
   line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .glass {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: var(--radius);
 }
 
@@ -54,20 +57,78 @@ body {
   font-weight: 800;
 }
 
+/* Header Base */
 .header {
-  height: 70px;
+  min-height: 70px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 2rem;
+  padding: 0.8rem 2rem;
   position: sticky;
   top: 0;
   z-index: 1000;
   border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.header-nav {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  align-items: center;
 }
 
 .container {
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   padding: 2rem;
+  flex: 1;
+  /* Pushes footer down */
+}
+
+/* --- Responsive Utilities --- */
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0.8rem 1rem;
+    gap: 1rem;
+  }
+
+  .header h1 {
+    font-size: 1.4rem !important;
+  }
+
+  .header-nav {
+    gap: 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  /* Cart Layout Mobile */
+  .cart-layout {
+    grid-template-columns: 1fr !important;
+  }
+
+  .cart-summary {
+    position: sticky;
+    bottom: 0;
+    z-index: 100;
+    margin: 0 -1rem -1rem -1rem !important;
+    border-radius: 1rem 1rem 0 0 !important;
+    border-top: 1px solid var(--primary) !important;
+    background: var(--background) !important;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .hero-promo {
+    padding: 2rem 1rem !important;
+  }
+
+  .hero-title {
+    font-size: 2.5rem !important;
+  }
+
+  .category-grid {
+    grid-template-columns: 1fr !important;
+  }
 }
