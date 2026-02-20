@@ -42,7 +42,7 @@ function PagoExitosoContent() {
             <h1 className="title-gradient" style={{ fontSize: '3rem' }}>¡Gracias por tu compra!</h1>
 
             <p style={{ fontSize: '1.2rem', margin: '1.5rem 0' }}>
-                Tu pedido en <strong style={{ color: 'var(--primary)' }}>Dante Promociones</strong> ha sido procesado con éxito.
+                Tu pedido en <strong style={{ color: 'var(--primary)' }}>LA LUZ DE DANTE</strong> ha sido procesado con éxito.
             </p>
 
             <div className="glass" style={{ padding: '2rem', maxWidth: '600px', margin: '2rem auto', border: '1px solid var(--primary)', textAlign: 'left' }}>
@@ -55,6 +55,21 @@ function PagoExitosoContent() {
                         <p><strong>Número de Operación:</strong> {paymentData.id}</p>
                         <p><strong>Estado:</strong> Aprobado</p>
                         <p><strong>Total Cobrado:</strong> $ {Number(paymentData.total_paid).toLocaleString('es-CO')}</p>
+
+                        {/* Lista de Productos Comprados */}
+                        {paymentData.items && paymentData.items.length > 0 && (
+                            <div style={{ marginTop: '1rem', borderTop: '1px dashed var(--border)', paddingTop: '1rem' }}>
+                                <h4 style={{ margin: '0 0 0.5rem 0' }}>Productos:</h4>
+                                <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                                    {paymentData.items.map((item: any, index: number) => (
+                                        <li key={index} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem', fontSize: '0.9rem' }}>
+                                            <span>{item.quantity} x {item.title}</span>
+                                            <span>$ {Number(item.unit_price).toLocaleString('es-CO')}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
 
                         {paymentData.shipping_address && (
                             <div style={{ marginTop: '1rem', backgroundColor: 'var(--border)', padding: '1rem', borderRadius: 'var(--radius)' }}>

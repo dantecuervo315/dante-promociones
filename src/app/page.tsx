@@ -26,7 +26,7 @@ export default function Home() {
                         Oferta de Lanzamiento 🚀
                     </span>
                     <h1 className="title-gradient" style={{ fontSize: '4rem', margin: '1.5rem 0', lineHeight: '1.1' }}>
-                        DANTE <br /> PROMOCIONES
+                        LA LUZ <br /> DE DANTE
                     </h1>
                     <p style={{ fontSize: '1.5rem', marginBottom: '2rem', fontWeight: '500' }}>
                         ¡Hasta <span style={{ color: 'var(--primary)', fontSize: '2rem', fontWeight: '800' }}>50% OFF</span> en toda la tienda!

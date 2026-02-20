@@ -26,7 +26,9 @@ export default function Header() {
     return (
         <header className="header glass">
             <Link href="/" style={{ textDecoration: 'none' }}>
-                <div className="title-gradient" style={{ fontSize: '1.5rem', cursor: 'pointer' }}>Dante Promociones</div>
+                <h1 className="title-gradient" style={{ fontSize: '1.8rem', fontWeight: '900', margin: 0, letterSpacing: '-0.5px', cursor: 'pointer' }}>
+                    LA LUZ DE DANTE
+                </h1>
             </Link>
             <nav>
                 <ul style={{ display: 'flex', gap: '1.5rem', listStyle: 'none', alignItems: 'center' }}>

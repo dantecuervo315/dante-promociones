@@ -5,7 +5,7 @@ import { ReactNode } from 'react'
 import Header from '@/components/Header'
 
 export const metadata = {
-    title: 'Dante Promociones | Tienda Premium',
+    title: 'LA LUZ DE DANTE | Tienda Premium',
     description: 'Belleza, moda y tecnología en un solo lugar.',
 }
 

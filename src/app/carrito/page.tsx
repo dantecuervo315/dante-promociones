@@ -37,7 +37,8 @@ export default function CarritoPage() {
             });
             const data = await resp.json();
             if (data.init_point) {
-                window.open(data.init_point, '_blank');
+                // Redirigir en la misma pestaña para flujo de retorno automático
+                window.location.href = data.init_point;
             } else {
                 alert(`Hubo un problema al generar el pago: ${data.details || 'Error desconocido'}`);
                 console.error('Detalles del error:', data);

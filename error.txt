@@ -1,0 +1,500 @@
+﻿runtime.prod.js:12:61
+157)
+Building: at nN (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:64
+547) {
+Building: digest: 
+'1090347328'
+Building: }
+Building: Error 
+occurred 
+prerendering page 
+"/carrito". Read 
+more: https://nextjs.
+org/docs/messages/pre
+render-error
+Building: Error: 
+@clerk/clerk-react: 
+Missing 
+publishableKey. You 
+can get your key at h
+ttps://dashboard.cler
+k.com/last-active?pat
+h=api-keys.
+Building: at Object.t
+hrowMissingPublishabl
+eKeyError (/vercel/pa
+th0/.next/server/chun
+ks/176.js:42:1483)
+Building: at /vercel/
+path0/.next/server/ch
+unks/176.js:31:55322
+Building: at nj (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:46
+252)
+Building: at nM (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:47
+572)
+Building: at nN (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:64
+547)
+Building: at nI (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:47
+011)
+Building: at nM (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:47
+718)
+Building: at nN (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:64
+547)
+Building: at nM (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:61
+157)
+Building: at nN (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:64
+547)
+Building: Generating 
+static pages (6/9)
+Building: Error: 
+@clerk/clerk-react: 
+Missing 
+publishableKey. You 
+can get your key at h
+ttps://dashboard.cler
+k.com/last-active?pat
+h=api-keys.
+Building: at Object.t
+hrowMissingPublishabl
+eKeyError (/vercel/pa
+th0/.next/server/chun
+ks/176.js:42:1483)
+Building: at /vercel/
+path0/.next/server/ch
+unks/176.js:31:55322
+Building: at nj (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:46
+252)
+Building: at nM (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:47
+572)
+Building: at nN (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:64
+547)
+Building: at nI (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:47
+011)
+Building: at nM (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:47
+718)
+Building: at nN (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:64
+547)
+Building: at nM (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:61
+157)
+Building: at nN (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:64
+547) {
+Building: digest: 
+'1090347328'
+Building: }
+Building: Error 
+occurred 
+prerendering page 
+"/". Read more: https
+://nextjs.org/docs/me
+ssages/prerender-erro
+r
+Building: Error: 
+@clerk/clerk-react: 
+Missing 
+publishableKey. You 
+can get your key at h
+ttps://dashboard.cler
+k.com/last-active?pat
+h=api-keys.
+Building: at Object.t
+hrowMissingPublishabl
+eKeyError (/vercel/pa
+th0/.next/server/chun
+ks/176.js:42:1483)
+Building: at /vercel/
+path0/.next/server/ch
+unks/176.js:31:55322
+Building: at nj (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:46
+252)
+Building: at nM (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:47
+572)
+Building: at nN (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:64
+547)
+Building: at nI (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:47
+011)
+Building: at nM (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:47
+718)
+Building: at nN (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:64
+547)
+Building: at nM (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:61
+157)
+Building: at nN (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:64
+547)
+Building: Error: 
+@clerk/clerk-react: 
+Missing 
+publishableKey. You 
+can get your key at h
+ttps://dashboard.cler
+k.com/last-active?pat
+h=api-keys.
+Building: at Object.t
+hrowMissingPublishabl
+eKeyError (/vercel/pa
+th0/.next/server/chun
+ks/176.js:42:1483)
+Building: at /vercel/
+path0/.next/server/ch
+unks/176.js:31:55322
+Building: at nj (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:46
+252)
+Building: at nM (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:47
+572)
+Building: at nN (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:64
+547)
+Building: at nI (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:47
+011)
+Building: at nM (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:47
+718)
+Building: at nN (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:64
+547)
+Building: at nM (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:61
+157)
+Building: at nN (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:64
+547) {
+Building: digest: 
+'1090347328'
+Building: }
+Building: Error 
+occurred 
+prerendering page 
+"/pago-exitoso". 
+Read more: https://ne
+xtjs.org/docs/message
+s/prerender-error
+Building: Error: 
+@clerk/clerk-react: 
+Missing 
+publishableKey. You 
+can get your key at h
+ttps://dashboard.cler
+k.com/last-active?pat
+h=api-keys.
+Building: at Object.t
+hrowMissingPublishabl
+eKeyError (/vercel/pa
+th0/.next/server/chun
+ks/176.js:42:1483)
+Building: at /vercel/
+path0/.next/server/ch
+unks/176.js:31:55322
+Building: at nj (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:46
+252)
+Building: at nM (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:47
+572)
+Building: at nN (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:64
+547)
+Building: at nI (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:47
+011)
+Building: at nM (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:47
+718)
+Building: at nN (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:64
+547)
+Building: at nM (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:61
+157)
+Building: at nN (/ver
+cel/path0/node_module
+s/next/dist/compiled/
+next-server/app-page.
+runtime.prod.js:12:64
+547)
+Building: Error: 
+supabaseUrl is 
+required.
+Building: at /vercel/
+path0/.next/server/ap
+p/productos/page.js:3
+7:48129
+Building: at new rm (
+/vercel/path0/.next/s
+erver/app/productos/p
+age.js:37:48380)
+Building: at 74814 (/
+vercel/path0/.next/se
+rver/app/productos/pa
+ge.js:37:52548)
+Building: at 
+Object.t [as 
+require] (/vercel/pat
+h0/.next/server/webpa
+ck-runtime.js:1:128)
+Building: at require 
+(/vercel/path0/node_m
+odules/next/dist/comp
+iled/next-server/app-
+page.runtime.prod.js:
+16:18839)
+Building: at i (/verc
+el/path0/node_modules
+/next/dist/compiled/n
+ext-server/app-page.r
+untime.prod.js:12:882
+96)
+Building: at /vercel/
+path0/node_modules/ne
+xt/dist/compiled/next
+-server/app-page.runt
+ime.prod.js:12:98819
+Building: at /vercel/
+path0/node_modules/ne
+xt/dist/compiled/next
+-server/app-page.runt
+ime.prod.js:12:98906
+Building: at t (/verc
+el/path0/node_modules
+/next/dist/compiled/n
+ext-server/app-page.r
+untime.prod.js:12:991
+09)
+Building: at 
+runNextTicks (node:in
+ternal/process/task_q
+ueues:64:5) {
+Building: digest: 
+'1415475188'
+Building: }
+Building: Error 
+occurred 
+prerendering page 
+"/productos". Read 
+more: https://nextjs.
+org/docs/messages/pre
+render-error
+Building: Error: 
+supabaseUrl is 
+required.
+Building: at /vercel/
+path0/.next/server/ap
+p/productos/page.js:3
+7:48129
+Building: at new rm (
+/vercel/path0/.next/s
+erver/app/productos/p
+age.js:37:48380)
+Building: at 74814 (/
+vercel/path0/.next/se
+rver/app/productos/pa
+ge.js:37:52548)
+Building: at 
+Object.t [as 
+require] (/vercel/pat
+h0/.next/server/webpa
+ck-runtime.js:1:128)
+Building: at require 
+(/vercel/path0/node_m
+odules/next/dist/comp
+iled/next-server/app-
+page.runtime.prod.js:
+16:18839)
+Building: at i (/verc
+el/path0/node_modules
+/next/dist/compiled/n
+ext-server/app-page.r
+untime.prod.js:12:882
+96)
+Building: at /vercel/
+path0/node_modules/ne
+xt/dist/compiled/next
+-server/app-page.runt
+ime.prod.js:12:98819
+Building: at /vercel/
+path0/node_modules/ne
+xt/dist/compiled/next
+-server/app-page.runt
+ime.prod.js:12:98906
+Building: at t (/verc
+el/path0/node_modules
+/next/dist/compiled/n
+ext-server/app-page.r
+untime.prod.js:12:991
+09)
+Building: at 
+runNextTicks (node:in
+ternal/process/task_q
+ueues:64:5)
+Building: Ô£ô 
+Generating static 
+pages (9/9)
+Building: > Export 
+encountered errors 
+on following paths:
+Building: 
+/_not-found/page: 
+/_not-found
+Building: 
+/carrito/page: 
+/carrito
+Building: /page: /
+Building: 
+/pago-exitoso/page: 
+/pago-exitoso
+Building: 
+/productos/page: 
+/productos
+Building: Error: 
+Command "npm run 
+build" exited with 1
+Error: Command "npm 
+run build" exited 
+with 1
+https://dante-promociones-2u7fsbph8-dantecuervo315-7103s-projects.vercel.app

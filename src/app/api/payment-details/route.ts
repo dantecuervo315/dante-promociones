@@ -22,7 +22,8 @@ export async function GET(req: NextRequest) {
             status: result.status,
             total_paid: result.transaction_amount,
             shipping_address: result.additional_info?.shipments?.receiver_address || null,
-            payer_email: result.payer?.email
+            payer_email: result.payer?.email,
+            items: result.additional_info?.items || []
         };
 
         return NextResponse.json(data);
