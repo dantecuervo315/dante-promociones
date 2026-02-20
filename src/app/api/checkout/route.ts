@@ -5,7 +5,8 @@ export async function POST(req: NextRequest) {
     try {
         const { items, buyer, shipping } = await req.json();
         console.log('Items recibidos para checkout:', items);
-        console.log('Datos del comprador:', { email: buyer?.email, telefono: buyer?.telefono });
+        console.log('Datos del comprador:', { nombre: buyer?.nombre, email: buyer?.email, telefono: buyer?.telefono });
+        console.log('Datos de envío:', shipping);
 
         // Validaciones básicas
         if (!items || !items.length) {
@@ -21,7 +22,17 @@ export async function POST(req: NextRequest) {
 
         const preference = new Preference(client);
 
-        const body = {
+        // Detectar URL del sitio de forma robusta
+        const hostHeader = req.headers.get('host');
+        const protocol = hostHeader?.includes('localhost') ? 'http' : 'https';
+        let siteUrl = (hostHeader ? `${protocol}://${hostHeader}` : process.env.NEXT_PUBLIC_SITE_URL) || 'http://localhost:3000';
+
+        // Limpiar siteUrl de posibles saltos de línea (\r\n) que vienen de Windows
+        siteUrl = siteUrl.replace(/[\n\r]/g, '').trim();
+
+        console.log('Site URL detectado para Mercado Pago:', siteUrl);
+
+        const body: any = {
             items: [
                 ...items.map((item: any) => ({
                     id: String(item.id || 'sin-id'),
@@ -32,29 +43,30 @@ export async function POST(req: NextRequest) {
                 })),
                 ...(shipping?.mode === 'envio' ? [{
                     id: 'envio-mensajeria',
-                    title: 'Envío por Mensajería (Nacional)',
-                    unit_price: 15000,
+                    title: shipping.provider || 'Envío por Mensajería',
+                    unit_price: Math.round(Number(shipping.cost || 15000)),
                     quantity: 1,
                     currency_id: 'COP',
                 }] : [])
             ],
             payer: {
+                name: buyer.nombre || 'Cliente',
                 email: buyer.email,
                 phone: buyer.telefono ? {
                     number: String(buyer.telefono).replace(/\D/g, ''),
                 } : undefined,
             },
             back_urls: {
-                success: `${req.nextUrl.origin}/pago-exitoso`,
-                failure: `${req.nextUrl.origin}/carrito`,
-                pending: `${req.nextUrl.origin}/carrito`,
+                success: `${siteUrl}/pago-exitoso`,
+                failure: `${siteUrl}/carrito`,
+                pending: `${siteUrl}/carrito`,
             },
             auto_return: 'approved' as const,
             metadata: {
                 shipping_mode: shipping?.mode || 'tienda',
                 customer_email: buyer?.email || '',
                 customer_phone: buyer?.telefono || '',
-                customer_name: shipping?.data?.nombre || 'Cliente',
+                customer_name: buyer?.nombre || shipping?.data?.nombre || 'Cliente',
                 customer_address: shipping?.data?.direccion || 'Retiro en Tienda',
                 customer_city: shipping?.data?.ciudad || 'Bogotá',
             }
