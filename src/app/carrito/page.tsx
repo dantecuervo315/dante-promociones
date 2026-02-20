@@ -2,28 +2,50 @@
 
 import { useCart } from '@/lib/CartContext'
 import Link from 'next/link'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { calculateShipping, ShippingRate } from '@/lib/shippingService';
 
 export default function CarritoPage() {
     const { items, removeFromCart, total, clearCart } = useCart();
     const [loading, setLoading] = useState(false);
     const [shippingMode, setShippingMode] = useState<'envio' | 'retiro'>('envio');
     const [contactData, setContactData] = useState({
+        nombre: '',
         email: '',
         telefono: '',
     });
     const [shippingData, setShippingData] = useState({
-        nombre: '',
         direccion: '',
         ciudad: '',
     });
+    const [shippingRate, setShippingRate] = useState<ShippingRate | null>(null);
+    const [calculatingShipping, setCalculatingShipping] = useState(false);
     const [errors, setErrors] = useState<Record<string, string>>({});
 
     const validateEmail = (email: string) =>
         /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
+    useEffect(() => {
+        if (shippingMode === 'envio' && shippingData.ciudad.trim()) {
+            const delayDebounceFn = setTimeout(async () => {
+                setCalculatingShipping(true);
+                const rate = await calculateShipping(shippingData.ciudad);
+                setShippingRate(rate);
+                setCalculatingShipping(false);
+            }, 500);
+
+            return () => clearTimeout(delayDebounceFn);
+        } else {
+            setShippingRate(null);
+        }
+    }, [shippingData.ciudad, shippingMode]);
+
     const validate = () => {
         const newErrors: Record<string, string> = {};
+
+        if (!contactData.nombre) {
+            newErrors.nombre = 'El nombre es obligatorio';
+        }
 
         if (!contactData.email) {
             newErrors.email = 'El correo es obligatorio';
@@ -38,7 +60,6 @@ export default function CarritoPage() {
         }
 
         if (shippingMode === 'envio') {
-            if (!shippingData.nombre) newErrors.nombre = 'El nombre es obligatorio';
             if (!shippingData.direccion) newErrors.direccion = 'La dirección es obligatoria';
             if (!shippingData.ciudad) newErrors.ciudad = 'La ciudad es obligatoria';
         }
@@ -58,14 +79,17 @@ export default function CarritoPage() {
                 body: JSON.stringify({
                     items,
                     buyer: {
+                        nombre: contactData.nombre,
                         email: contactData.email,
                         telefono: contactData.telefono,
                     },
                     shipping: {
                         mode: shippingMode,
-                        cost: shippingMode === 'envio' ? 15000 : 0,
+                        cost: shippingMode === 'envio' ? (shippingRate?.cost || 15000) : 0,
+                        provider: shippingRate?.provider || (shippingMode === 'envio' ? 'Estandar' : 'Retiro'),
                         data: {
                             ...shippingData,
+                            nombre: contactData.nombre,
                             telefono: contactData.telefono,
                         }
                     }
@@ -186,9 +210,34 @@ export default function CarritoPage() {
                     {/* Datos de contacto — siempre visibles */}
                     <div style={{ marginBottom: '1.5rem' }}>
                         <h3 style={{ marginBottom: '1rem', fontSize: '1rem' }}>
-                            📞 Datos de Contacto <span style={{ color: 'var(--primary)', fontSize: '0.8rem' }}>* Obligatorios</span>
+                            👤 Datos de Contacto <span style={{ color: 'var(--primary)', fontSize: '0.8rem' }}>* Obligatorios</span>
                         </h3>
                         <div style={{ display: 'grid', gap: '0.75rem' }}>
+                            <div>
+                                <input
+                                    type="text"
+                                    id="contacto-nombre"
+                                    placeholder="Nombre Completo *"
+                                    className="glass"
+                                    style={{
+                                        padding: '1rem',
+                                        width: '100%',
+                                        outline: 'none',
+                                        border: errors.nombre ? '1.5px solid #e53e3e' : '1px solid rgba(255,255,255,0.3)',
+                                        borderRadius: 'var(--radius)',
+                                    }}
+                                    value={contactData.nombre}
+                                    onChange={(e) => {
+                                        setContactData({ ...contactData, nombre: e.target.value });
+                                        if (errors.nombre) setErrors({ ...errors, nombre: '' });
+                                    }}
+                                />
+                                {errors.nombre && (
+                                    <p style={{ color: '#e53e3e', fontSize: '0.78rem', marginTop: '0.3rem', paddingLeft: '0.5rem' }}>
+                                        ⚠ {errors.nombre}
+                                    </p>
+                                )}
+                            </div>
                             <div>
                                 <input
                                     type="email"
@@ -253,28 +302,6 @@ export default function CarritoPage() {
                         <div>
                             <h3 style={{ marginBottom: '1rem', fontSize: '1rem' }}>📦 Datos de Envío</h3>
                             <div style={{ display: 'grid', gap: '0.75rem' }}>
-                                <div>
-                                    <input
-                                        type="text"
-                                        placeholder="Nombre Completo *"
-                                        className="glass"
-                                        style={{
-                                            padding: '1rem',
-                                            width: '100%',
-                                            outline: 'none',
-                                            border: errors.nombre ? '1.5px solid #e53e3e' : '1px solid rgba(255,255,255,0.3)',
-                                            borderRadius: 'var(--radius)',
-                                        }}
-                                        value={shippingData.nombre}
-                                        onChange={(e) => {
-                                            setShippingData({ ...shippingData, nombre: e.target.value });
-                                            if (errors.nombre) setErrors({ ...errors, nombre: '' });
-                                        }}
-                                    />
-                                    {errors.nombre && (
-                                        <p style={{ color: '#e53e3e', fontSize: '0.78rem', marginTop: '0.3rem', paddingLeft: '0.5rem' }}>⚠ {errors.nombre}</p>
-                                    )}
-                                </div>
                                 <div style={{ display: 'flex', gap: '0.75rem' }}>
                                     <div style={{ flex: 1 }}>
                                         <input
@@ -296,6 +323,14 @@ export default function CarritoPage() {
                                         />
                                         {errors.ciudad && (
                                             <p style={{ color: '#e53e3e', fontSize: '0.78rem', marginTop: '0.3rem', paddingLeft: '0.5rem' }}>⚠ {errors.ciudad}</p>
+                                        )}
+                                        {calculatingShipping && (
+                                            <p style={{ fontSize: '0.7rem', marginTop: '0.3rem', opacity: 0.6 }}>Calculando envío...</p>
+                                        )}
+                                        {shippingRate && !calculatingShipping && (
+                                            <p style={{ fontSize: '0.75rem', marginTop: '0.3rem', color: 'var(--primary)', fontWeight: '500' }}>
+                                                🚀 {shippingRate.provider} ({shippingRate.estimatedDays})
+                                            </p>
                                         )}
                                     </div>
                                 </div>
@@ -336,11 +371,11 @@ export default function CarritoPage() {
                         </div>
                         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
                             <span>Envío</span>
-                            <span>{shippingMode === 'envio' ? '$ 15.000' : 'GRATIS'}</span>
+                            <span>{shippingMode === 'envio' ? (calculatingShipping ? '...' : `$ ${(shippingRate?.cost || 15000).toLocaleString('es-CO')}`) : 'GRATIS'}</span>
                         </div>
                         <div style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 'bold', fontSize: '1.2rem', marginTop: '1rem' }}>
                             <span>Total</span>
-                            <span>$ {(total + (shippingMode === 'envio' ? 15000 : 0)).toLocaleString('es-CO')}</span>
+                            <span>$ {(total + (shippingMode === 'envio' ? (shippingRate?.cost || 15000) : 0)).toLocaleString('es-CO')}</span>
                         </div>
                     </div>
                     <button
