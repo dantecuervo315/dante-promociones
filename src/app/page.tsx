@@ -25,14 +25,14 @@ export default function Home() {
                     }}>
                         Oferta de Lanzamiento 🚀
                     </span>
-                    <h1 className="title-gradient" style={{ fontSize: '4rem', margin: '1.5rem 0', lineHeight: '1.1' }}>
+                    <h1 className="title-gradient hero-title">
                         LA LUZ <br /> DE DANTE
                     </h1>
                     <p style={{ fontSize: '1.5rem', marginBottom: '2rem', fontWeight: '500' }}>
                         ¡Hasta <span style={{ color: 'var(--primary)', fontSize: '2rem', fontWeight: '800' }}>50% OFF</span> en toda la tienda!
                     </p>
                     <Link href="/productos?categoria=promociones">
-                        <button className="btn-primary" style={{ padding: '1.2rem 3rem', fontSize: '1.2rem' }}>
+                        <button className="btn-primary glass" style={{ padding: '1.2rem 3rem', fontSize: '1.2rem', color: 'var(--primary)', fontWeight: 'bold', cursor: 'pointer' }}>
                             Ver Ofertas Ahora
                         </button>
                     </Link>
@@ -53,7 +53,7 @@ export default function Home() {
 
             {/* Categorías Destacadas */}
             <h2 style={{ textAlign: 'center', margin: '3rem 0 1.5rem' }}>Explora nuestras Categorías</h2>
-            <section style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
+            <section className="category-grid">
                 <Link href="/productos?categoria=belleza" style={{ textDecoration: 'none', color: 'inherit' }}>
                     <div className="glass category-card" style={{ padding: '2.5rem', textAlign: 'center', transition: 'transform 0.3s' }}>
                         <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>💄</div>

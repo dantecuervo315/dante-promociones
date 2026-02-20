@@ -31,7 +31,7 @@ export default function Header() {
                 </h1>
             </Link>
             <nav>
-                <ul style={{ display: 'flex', gap: '1.5rem', listStyle: 'none', alignItems: 'center' }}>
+                <ul className="header-nav">
                     <li><Link href="/" style={{ textDecoration: 'none', color: 'inherit' }}>Inicio</Link></li>
                     <li><Link href="/productos" style={{ textDecoration: 'none', color: 'inherit' }}>Productos</Link></li>
                     <li>

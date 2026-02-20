@@ -76,7 +76,7 @@ export default function CarritoPage() {
         <div>
             <h1 className="title-gradient" style={{ fontSize: '2.5rem', marginBottom: '2rem' }}>Tu Carrito</h1>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 350px', gap: '2rem', alignItems: 'start' }}>
+            <div className="cart-layout">
                 <div className="glass" style={{ padding: '1.5rem' }}>
                     {items.map(item => (
                         <div key={item.id} style={{
@@ -112,7 +112,7 @@ export default function CarritoPage() {
                     </button>
                 </div>
 
-                <div className="glass" style={{ padding: '1.5rem' }}>
+                <div className="glass cart-summary" style={{ padding: '1.5rem' }}>
                     <h3 style={{ marginBottom: '1.5rem' }}>Datos de Entrega</h3>
 
                     <div style={{ marginBottom: '1.5rem', display: 'flex', gap: '1rem' }}>
