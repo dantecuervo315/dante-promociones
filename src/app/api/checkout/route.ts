@@ -22,15 +22,18 @@ export async function POST(req: NextRequest) {
 
         const preference = new Preference(client);
 
-        // Detectar URL del sitio de forma robusta
-        const hostHeader = req.headers.get('host');
-        const protocol = hostHeader?.includes('localhost') ? 'http' : 'https';
-        let siteUrl = (hostHeader ? `${protocol}://${hostHeader}` : process.env.NEXT_PUBLIC_SITE_URL) || 'http://localhost:3000';
+        const hostHeader = req.headers.get('host') || '';
+        let siteUrl = 'http://localhost:3000';
 
-        // Limpiar siteUrl de posibles saltos de línea (\r\n) que vienen de Windows
-        siteUrl = siteUrl.replace(/[\n\r]/g, '').trim();
+        // Si no estamos en local, usamos la variable de entorno
+        if (!hostHeader.includes('localhost') && !hostHeader.includes('127.0.0.1') && process.env.NEXT_PUBLIC_SITE_URL) {
+            siteUrl = process.env.NEXT_PUBLIC_SITE_URL.replace(/[\n\r]/g, '').trim();
+        } else {
+            // En local forzamos localhost:3000 para evitar desajustes
+            siteUrl = 'http://localhost:3000';
+        }
 
-        console.log('Site URL detectado para Mercado Pago:', siteUrl);
+        console.log('Site URL FINAL para Mercado Pago:', siteUrl);
 
         const body: any = {
             items: [
@@ -57,11 +60,12 @@ export async function POST(req: NextRequest) {
                 } : undefined,
             },
             back_urls: {
-                success: `${siteUrl}/pago-exitoso`,
-                failure: `${siteUrl}/carrito`,
-                pending: `${siteUrl}/carrito`,
+                success: `${siteUrl}/pago_exitoso`.trim(),
+                failure: `${siteUrl}/carrito`.trim(),
+                pending: `${siteUrl}/carrito`.trim(),
             },
-            auto_return: 'approved' as const,
+            // NOTA: auto_return falla en localhost/http. Solo habilitar en producción con https.
+            // auto_return: 'approved',
             metadata: {
                 shipping_mode: shipping?.mode || 'tienda',
                 customer_email: buyer?.email || '',
@@ -72,7 +76,7 @@ export async function POST(req: NextRequest) {
             }
         };
 
-        console.log('Enviando preferencia a MP:', JSON.stringify(body, null, 2));
+        console.log('PREFERENCIA MP:', JSON.stringify(body, null, 2));
 
         const response = await preference.create({ body });
 
