@@ -4,6 +4,7 @@ import { Producto, getProductos } from '@/lib/productosService'
 import { useState, useEffect, Suspense } from 'react'
 import { useCart } from '@/lib/CartContext'
 import { useSearchParams } from 'next/navigation'
+import Link from 'next/link'
 
 function ProductosContent() {
     const [productos, setProductos] = useState<Producto[]>([])
@@ -61,11 +62,16 @@ function ProductosContent() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '2rem' }}>
                 {productosFiltrados.map(producto => (
                     <div key={producto.id} className="glass" style={{ padding: '1rem', overflow: 'hidden' }}>
-                        <img
-                            src={producto.imagen}
-                            alt={producto.nombre}
-                            style={{ width: '100%', height: '200px', objectFit: 'cover', borderRadius: 'var(--radius)' }}
-                        />
+                        <Link href={`/productos/${producto.id}`}>
+                            <div style={{ cursor: 'pointer', overflow: 'hidden', borderRadius: 'var(--radius)' }}>
+                                <img
+                                    src={producto.imagen}
+                                    alt={producto.nombre}
+                                    style={{ width: '100%', height: '200px', objectFit: 'cover', transition: 'transform 0.3s' }}
+                                    className="hover-zoom"
+                                />
+                            </div>
+                        </Link>
                         <div style={{ padding: '1rem 0' }}>
                             <h3 style={{ margin: '0.5rem 0' }}>{producto.nombre}</h3>
                             <p style={{ fontSize: '0.9rem', opacity: 0.7, height: '3rem', overflow: 'hidden' }}>{producto.descripcion}</p>

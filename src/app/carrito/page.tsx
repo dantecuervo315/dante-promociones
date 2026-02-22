@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import { calculateShipping, ShippingRate } from '@/lib/shippingService';
 
 export default function CarritoPage() {
-    const { items, removeFromCart, total, clearCart } = useCart();
+    const { items, removeFromCart, updateQuantity, total, clearCart } = useCart();
     const [loading, setLoading] = useState(false);
     const [shippingMode, setShippingMode] = useState<'envio' | 'retiro'>('envio');
     const [contactData, setContactData] = useState({
@@ -150,7 +150,21 @@ export default function CarritoPage() {
                                 <img src={item.imagen} alt={item.nombre} style={{ width: '60px', height: '60px', borderRadius: '0.5rem', objectFit: 'cover' }} />
                                 <div>
                                     <h4 style={{ margin: 0 }}>{item.nombre}</h4>
-                                    <p style={{ fontSize: '0.8rem', opacity: 0.7 }}>Cant: {item.quantity}</p>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginTop: '0.5rem' }}>
+                                        <button
+                                            onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                                            style={{ width: '24px', height: '24px', borderRadius: '50%', border: '1px solid var(--border)', background: 'transparent', color: 'inherit', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                                        >
+                                            -
+                                        </button>
+                                        <span style={{ fontWeight: 'bold', minWidth: '1.5rem', textAlign: 'center' }}>{item.quantity}</span>
+                                        <button
+                                            onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                                            style={{ width: '24px', height: '24px', borderRadius: '50%', border: '1px solid var(--border)', background: 'transparent', color: 'inherit', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                                        >
+                                            +
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                             <div style={{ textAlign: 'right' }}>
